@@ -1,0 +1,40 @@
+.form-players {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+    background-color: gray;
+}
+
+.form-players label{
+    color: blue;
+    margin-left: 0.5rem;
+}
+
+.players-nickname {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.players-nickname input {
+  width: 90%;
+  height: 30px;
+  margin: 0.5rem;
+}
+
+.players-nickname input#playerTwoName, .players-nickname label#playerTwoName {
+    visibility: hidden;
+  }
+
+.players-nickname button {
+  padding: 0.5em 1em;
+  border: none;
+  background: rgb(100, 200, 255);
+  cursor: pointer;
+}
