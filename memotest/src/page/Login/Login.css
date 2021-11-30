@@ -1,10 +1,14 @@
 .form-players {
-    display: flex;
+    display: grid;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
 
     background-color: gray;
+}
+
+.form-players .choose-multiplayer{
+  display: grid;
 }
 
 .form-players label{
@@ -20,6 +24,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transform: translateY(-7rem);
 }
 
 .players-nickname input {
@@ -29,7 +34,7 @@
 }
 
 .players-nickname input#playerTwoName, .players-nickname label#playerTwoName {
-    visibility: hidden;
+    /* visibility: hidden; */
   }
 
 .players-nickname button {
@@ -37,4 +42,10 @@
   border: none;
   background: rgb(100, 200, 255);
   cursor: pointer;
+}
+
+.choose-board{
+  display: grid;
+  width: 100%;
+  transform: translateY(-15rem);
 }

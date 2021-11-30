@@ -3,28 +3,36 @@ import PlayerOneContext from "../../context/playerOneContext";
 import "./GameToken.css";
 
 const GameToken = ({ animating, handleMemoClick, memoBlock }) => {
+  const { playerOneContext, setPlayerOneContext } =
+    useContext(PlayerOneContext);
 
-    const {playerOneContext, setPlayerOneContext} = useContext(PlayerOneContext);
+  const [allFlipped, setAllFlipped] = useState([]);
 
-    const [allFlipped, setAllFlipped] = useState([]);
+  const pickTokenCard = () => {
+    let cardsFlipped = document.getElementsByClassName(
+      "memo-block-inner memo-block-flipped"
+    );
+    setAllFlipped(cardsFlipped);
+    console.log(cardsFlipped);
+    // if(allFlipped.length + 1 > 15){
+    //     setPlayerOneContext({...playerOneContext, isWinner: true})
+    // }
+    verifyIfIsWinner();
+    return !memoBlock.flipped && !animating && handleMemoClick(memoBlock);
+  };
+  /*
+    Hacer que checkee en que tablero esta y lance el ganador, fijarse
+    que cambia las condiciones depende del tablero.
+  */
 
-    const pickTokenCard = () => {
-        let cardsFlipped = document.getElementsByClassName("memo-block-inner memo-block-flipped");
-        setAllFlipped(cardsFlipped);
-        console.log(cardsFlipped);
-        if(allFlipped.length + 1 === 16){
-            setPlayerOneContext({...playerOneContext, isWinner: true})
-            console.log("Hay un ganador");
-        }
-        return !memoBlock.flipped && !animating && handleMemoClick(memoBlock)
+  const verifyIfIsWinner = () => {
+    if (allFlipped.length + 1 > 15) {
+      setPlayerOneContext({ ...playerOneContext, isWinner: true });
     }
-    
+  };
 
   return (
-    <div
-      className="memo-block"
-      onClick={pickTokenCard}
-    >
+    <div className="memo-block" onClick={pickTokenCard}>
       <div
         className={`memo-block-inner ${
           memoBlock.flipped && "memo-block-flipped"

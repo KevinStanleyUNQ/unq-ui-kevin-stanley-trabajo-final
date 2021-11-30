@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import BoardGame from "./components/Boards/BoardGame";
 import { PlayerOneProvider } from "./context/playerOneContext";
 import { BoardProvider } from "./context/boardContext";
 import Login from "./page/Login/Login";
+import MemoGame from "./page/MemoGame/MemoGame";
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
       <BoardProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/board" element={<BoardGame />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/game" element={<MemoGame />} />
             {/* <Route path="/board4x4" element={<Board5x5 />} /> */}
             {/* <Route path="/board4x4" element={<Board8x8 />} /> */}
           </Routes>

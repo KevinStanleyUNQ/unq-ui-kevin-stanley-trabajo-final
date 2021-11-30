@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import PlayerOneContext from "../../context/playerOneContext.js";
 import Board4x4 from "./Board4x4/Board4x4.js";
+import Board6x4 from "./Board6x4/Board6x4.js";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import "./BoardGame.css";
 import BoardContext from "../../context/boardContext.js";
@@ -19,10 +20,12 @@ const BoardGame = () => {
 
   const navigate = useNavigate();
 
-  const emojiList = [..."😜😁😒😊😂🤣😍😎"];
+  const emojiList4x4 = [..."😜😁😒😊😂🤣😍😎"];
+  const emojiList5x5 = [..."😜😁😒😊😂🤣😍😎👀✨🌹💋"]
+  const emojiList8x8 = [..."😜😁😒😊😂🤣😍😎👀✨🎁🤔"]
 
   useEffect(() => {
-    const shuffledEmojiList = shuffleArray([...emojiList, ...emojiList]);
+    const shuffledEmojiList = shuffle();
     setShuffledMemoBlocks(
       shuffledEmojiList.map((emoji, i) => ({ index: i, emoji, flipped: false }))
     );
@@ -30,7 +33,7 @@ const BoardGame = () => {
 
   useEffect(() => {
     if (playerOneContext.displayname === "") {
-      navigate("/login");
+      navigate("/");
     }
   });
 
@@ -73,7 +76,7 @@ const BoardGame = () => {
 
   const retryGame = () => {
     setPlayerOneContext({ ...playerOneContext, isWinner: false });
-    const shuffledEmojiList = shuffleArray([...emojiList, ...emojiList]);
+    const shuffledEmojiList = shuffleArray([...emojiList4x4, ...emojiList4x4]);
     setShuffledMemoBlocks(
       shuffledEmojiList.map((emoji, i) => ({ index: i, emoji, flipped: false }))
     );
@@ -82,6 +85,22 @@ const BoardGame = () => {
   const redirectToLogin = () => {
     window.location.reload();
   };
+
+  const shuffle = () => {
+    let arrayShuffle = [];
+    if(boardContext.isBoard4x4){
+      arrayShuffle = shuffleArray([...emojiList4x4, ...emojiList4x4]);
+    }
+    else if(boardContext.isBoard5x5){
+      arrayShuffle = shuffleArray([...emojiList5x5, ...emojiList5x5]);
+    }
+    else{
+      arrayShuffle = shuffleArray([...emojiList8x8, ...emojiList8x8]);
+    }
+
+    return arrayShuffle;
+  }
+  
 
   return (
     <>
@@ -96,7 +115,7 @@ const BoardGame = () => {
         )}
         
         {boardContext.isBoard5x5 && (
-          <Board4x4
+          <Board6x4
             memoBlocks={shuffledMemoBlocks}
             animating={animating}
             handleMemoClick={handleMemoClick}
@@ -150,6 +169,3 @@ const BoardGame = () => {
 
 export default BoardGame;
 
-//<div className="show-winner">
-//<h1 className="displayname-winner">El ganador es: {playerOneContext.displayname}</h1>
-//</div>

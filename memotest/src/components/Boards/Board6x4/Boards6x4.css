@@ -1,0 +1,7 @@
+.board-6x4 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 10px;
+    max-width: 600px;
+    margin: 100px auto;
+}
