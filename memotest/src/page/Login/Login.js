@@ -44,17 +44,17 @@ const Login = () => {
     setBoardContext({
       ...boardContext,
       isBoard4x4: true,
-      isBoard5x5: false,
+      isBoard6x4: false,
       isBoard8x8: false,
     });
   };
 
-  const pickBoard5x5 = () => {
+  const pickBoard6x4 = () => {
     handlePlay();
     setBoardContext({
       ...boardContext,
       isBoard4x4: false,
-      isBoard5x5: true,
+      isBoard6x4: true,
       isBoard8x8: false,
     });
   }
@@ -64,7 +64,7 @@ const Login = () => {
     setBoardContext({
       ...boardContext,
       isBoard4x4: false,
-      isBoard5x5: false,
+      isBoard6x4: false,
       isBoard8x8: true,
     });
   }
@@ -130,8 +130,8 @@ const Login = () => {
         >
           Tablero 4x4
         </button>
-        <button type="button" className="btn btn-primary"  onClick={pickBoard5x5}>
-          Tablero 5x5
+        <button type="button" className="btn btn-primary"  onClick={pickBoard6x4}>
+          Tablero 6x4
         </button>
         <button type="button" className="btn btn-primary"  onClick={pickBoard8x8}>
           Tablero 8x8

@@ -1,10 +1,15 @@
 import { useContext, useState } from "react";
+import BoardContext from "../../context/boardContext";
 import PlayerOneContext from "../../context/playerOneContext";
 import "./GameToken.css";
 
 const GameToken = ({ animating, handleMemoClick, memoBlock }) => {
+  
+  
   const { playerOneContext, setPlayerOneContext } =
     useContext(PlayerOneContext);
+
+  const { boardContext } = useContext(BoardContext);
 
   const [allFlipped, setAllFlipped] = useState([]);
 
@@ -14,9 +19,6 @@ const GameToken = ({ animating, handleMemoClick, memoBlock }) => {
     );
     setAllFlipped(cardsFlipped);
     console.log(cardsFlipped);
-    // if(allFlipped.length + 1 > 15){
-    //     setPlayerOneContext({...playerOneContext, isWinner: true})
-    // }
     verifyIfIsWinner();
     return !memoBlock.flipped && !animating && handleMemoClick(memoBlock);
   };
@@ -26,9 +28,23 @@ const GameToken = ({ animating, handleMemoClick, memoBlock }) => {
   */
 
   const verifyIfIsWinner = () => {
-    if (allFlipped.length + 1 > 15) {
+
+    const conditionWinBoard4x4 = allFlipped.length + 1 === 16 && boardContext.isBoard4x4;
+    const conditionWinBoard6x4 = allFlipped.length + 1 === 24 && boardContext.isBoard6x4;
+    const conditionWinBoard8x8 = allFlipped.length + 1 === 64 && boardContext.isBoard8x8;
+    
+    if (conditionWinBoard4x4) {
+      console.log("Gano el Tablero 4x4");
       setPlayerOneContext({ ...playerOneContext, isWinner: true });
     }
+    else if(conditionWinBoard6x4){
+      setPlayerOneContext({ ...playerOneContext, isWinner: true });
+    }
+    else if(conditionWinBoard8x8){
+      setPlayerOneContext({ ...playerOneContext, isWinner: true });
+    }
+
+   
   };
 
   return (

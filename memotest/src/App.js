@@ -14,8 +14,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/game" element={<MemoGame />} />
-            {/* <Route path="/board4x4" element={<Board5x5 />} /> */}
-            {/* <Route path="/board4x4" element={<Board8x8 />} /> */}
           </Routes>
         </BrowserRouter>
       </BoardProvider>

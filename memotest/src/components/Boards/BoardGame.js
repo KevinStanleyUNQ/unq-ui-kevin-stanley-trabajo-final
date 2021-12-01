@@ -4,9 +4,11 @@ import { useNavigate } from "react-router";
 import PlayerOneContext from "../../context/playerOneContext.js";
 import Board4x4 from "./Board4x4/Board4x4.js";
 import Board6x4 from "./Board6x4/Board6x4.js";
+import Board8x8 from "./Board8x8/Board8x8.js";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import "./BoardGame.css";
 import BoardContext from "../../context/boardContext.js";
+import { redirectToLogin, shuffleArray } from "../../utils/functionsGlobal.js";
 
 const BoardGame = () => {
   const [shuffledMemoBlocks, setShuffledMemoBlocks] = useState([]);
@@ -16,13 +18,15 @@ const BoardGame = () => {
 
   const { playerOneContext, setPlayerOneContext } =
     useContext(PlayerOneContext);
-  const { boardContext, setBoardContext } = useContext(BoardContext);
+  const { boardContext } = useContext(BoardContext);
 
   const navigate = useNavigate();
 
   const emojiList4x4 = [..."😜😁😒😊😂🤣😍😎"];
-  const emojiList5x5 = [..."😜😁😒😊😂🤣😍😎👀✨🌹💋"]
-  const emojiList8x8 = [..."😜😁😒😊😂🤣😍😎👀✨🎁🤔"]
+  const emojiList6x4 = [..."😜😁😒😊😂🤣😍😎👀✨🌹💋"];
+  const emojiList8x8 = [
+    ..."😜😁😒😊😂🤣😍😎👀✨🎁🤔🌹💋🎶🐱‍🚀🎂😈👹👽👻🤖💩😱🥵🥶🤪😴😣🤑",
+  ];
 
   useEffect(() => {
     const shuffledEmojiList = shuffle();
@@ -40,14 +44,6 @@ const BoardGame = () => {
   useEffect(() => {
     setShowModal(true);
   }, [playerOneContext.isWinner]);
-
-  const shuffleArray = (a) => {
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  };
 
   const handleMemoClick = (memoBlock) => {
     const flippedMemoBlock = { ...memoBlock, flipped: true };
@@ -75,32 +71,34 @@ const BoardGame = () => {
   };
 
   const retryGame = () => {
+    if (boardContext.isBoard4x4) {
+      reloadBoard(emojiList4x4);
+    } else if (boardContext.isBoard6x4) {
+      reloadBoard(emojiList6x4);
+    } else {
+      reloadBoard(emojiList8x8);
+    }
+  };
+
+  const reloadBoard = (emojiList) => {
     setPlayerOneContext({ ...playerOneContext, isWinner: false });
-    const shuffledEmojiList = shuffleArray([...emojiList4x4, ...emojiList4x4]);
+    const shuffledEmojiList = shuffleArray([...emojiList, ...emojiList]);
     setShuffledMemoBlocks(
       shuffledEmojiList.map((emoji, i) => ({ index: i, emoji, flipped: false }))
     );
   };
 
-  const redirectToLogin = () => {
-    window.location.reload();
-  };
-
   const shuffle = () => {
     let arrayShuffle = [];
-    if(boardContext.isBoard4x4){
+    if (boardContext.isBoard4x4) {
       arrayShuffle = shuffleArray([...emojiList4x4, ...emojiList4x4]);
-    }
-    else if(boardContext.isBoard5x5){
-      arrayShuffle = shuffleArray([...emojiList5x5, ...emojiList5x5]);
-    }
-    else{
+    } else if (boardContext.isBoard6x4) {
+      arrayShuffle = shuffleArray([...emojiList6x4, ...emojiList6x4]);
+    } else {
       arrayShuffle = shuffleArray([...emojiList8x8, ...emojiList8x8]);
     }
-
     return arrayShuffle;
-  }
-  
+  };
 
   return (
     <>
@@ -113,8 +111,8 @@ const BoardGame = () => {
             handleMemoClick={handleMemoClick}
           />
         )}
-        
-        {boardContext.isBoard5x5 && (
+
+        {boardContext.isBoard6x4 && (
           <Board6x4
             memoBlocks={shuffledMemoBlocks}
             animating={animating}
@@ -122,7 +120,7 @@ const BoardGame = () => {
           />
         )}
         {boardContext.isBoard8x8 && (
-          <Board4x4
+          <Board8x8
             memoBlocks={shuffledMemoBlocks}
             animating={animating}
             handleMemoClick={handleMemoClick}
@@ -145,7 +143,7 @@ const BoardGame = () => {
             </ModalBody>
           </Modal>
         )}
-        
+
         {/* playerTwoContext.isWinner && (
           <Modal isOpen={showModal}>
             <ModalHeader>
@@ -168,4 +166,3 @@ const BoardGame = () => {
 };
 
 export default BoardGame;
-

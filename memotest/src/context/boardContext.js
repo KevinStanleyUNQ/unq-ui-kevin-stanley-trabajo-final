@@ -5,7 +5,7 @@ const BoardContext = createContext();
 const BoardProvider = ({ children }) => {  
   const [boardContext, setBoardContext] = useState({
     isBoard4x4: true,
-    isBoard5x5: false,
+    isBoard6x4: false,
     isBoard8x8: false,
     thereIsAWinner: false
   });

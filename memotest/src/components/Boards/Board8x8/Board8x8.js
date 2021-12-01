@@ -1,11 +1,11 @@
 import React from "react";
 import GameToken from "../../GameToken/GameToken";
-import "./Board4x4.css";
+import "./Board8x8.css";
 
-const Board4x4 = ({ animating, handleMemoClick, memoBlocks }) => {
-
+const Board8x8 = ({ animating, handleMemoClick, memoBlocks }) => {
+  
   return (
-    <div className="board">
+    <div className="board-8x8">
       {memoBlocks.map((memoBlock, i) => {
         return (
           <GameToken
@@ -15,9 +15,9 @@ const Board4x4 = ({ animating, handleMemoClick, memoBlocks }) => {
             memoBlock={memoBlock}
           />
         );
-      })}   
+      })}
     </div>
   );
 };
 
-export default Board4x4;
+export default Board8x8;

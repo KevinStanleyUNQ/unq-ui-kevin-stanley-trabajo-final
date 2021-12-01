@@ -1,0 +1,7 @@
+.board-8x8 {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 10px;
+    max-width: 600px;
+    margin: 100px auto;
+}
