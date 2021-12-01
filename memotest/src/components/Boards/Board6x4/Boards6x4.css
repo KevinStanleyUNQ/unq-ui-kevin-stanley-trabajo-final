@@ -1,7 +1,45 @@
-.board-6x4 {
+.board-6x4{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 10px;
     max-width: 600px;
     margin: 100px auto;
+}
+
+@media(max-width: 650px){
+    .board-6x4 {
+        max-width: 500px;
+    }
+}
+
+@media(max-width: 510px){
+    .board-6x4 {
+        max-width: 400px;
+        grid-gap: 7px;
+        margin: 70px auto;
+    }
+}
+
+@media(max-width: 414px){
+    .board-6x4 {
+        max-width: 300px;
+        grid-gap: 7px;
+        margin: 110px auto;
+    }
+}
+
+@media(max-width: 330px){
+    .board-6x4 {
+        max-width: 200px;
+        grid-gap: 5px;
+        margin: 110px auto;
+    }
+}
+
+@media(max-width: 250px){
+    .board-6x4 {
+        max-width: 150px;
+        grid-gap: 5px;
+        margin: 110px auto;
+    }
 }

@@ -35,10 +35,57 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 55px;
+    /* font-size: 55px; */
+
+    font-size: 45px;
     
 }
 
 .memo-block-front {
     background-color: #0d5b72;
+}
+
+@media(max-width: 650px){
+    .board-8x8 {
+        max-width: 500px;
+    }
+    .memo-block-back {
+        font-size: 30px;
+      }
+}
+
+@media(max-width: 580px){
+   .memo-block-back {
+      font-size: 30px;
+    }
+}
+
+@media(max-width: 414px){
+    .memo-block-back {
+      font-size: 20px;
+    }
+}
+
+@media(max-width: 360px){
+    .memo-block-back {
+      font-size: 20px;
+    }
+}
+
+@media(max-width: 325px){
+    .memo-block-back {
+      font-size: 12px;
+    }
+}
+
+@media(max-width: 280px){
+    .memo-block-back {
+      font-size: 12px;
+    }
+}
+
+@media(max-width: 250px){
+    .memo-block-back {
+      font-size: 8px;
+    }
 }

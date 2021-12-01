@@ -22,10 +22,6 @@ const GameToken = ({ animating, handleMemoClick, memoBlock }) => {
     verifyIfIsWinner();
     return !memoBlock.flipped && !animating && handleMemoClick(memoBlock);
   };
-  /*
-    Hacer que checkee en que tablero esta y lance el ganador, fijarse
-    que cambia las condiciones depende del tablero.
-  */
 
   const verifyIfIsWinner = () => {
 
@@ -38,6 +34,7 @@ const GameToken = ({ animating, handleMemoClick, memoBlock }) => {
       setPlayerOneContext({ ...playerOneContext, isWinner: true });
     }
     else if(conditionWinBoard6x4){
+      console.log("Gano el Tablero 6x4");
       setPlayerOneContext({ ...playerOneContext, isWinner: true });
     }
     else if(conditionWinBoard8x8){

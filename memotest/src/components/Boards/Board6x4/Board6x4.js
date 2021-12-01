@@ -1,9 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
-import PlayerOneContext from "../../../context/playerOneContext";
+import React from "react";
 import GameToken from "../../GameToken/GameToken";
 import "./Boards6x4.css";
-import { Modal, ModalHeader, ModalBody } from "reactstrap";
-import { redirectToLogin, shuffleArray } from "../../../utils/functionsGlobal";
 
 const Board6x4 = ({ animating, handleMemoClick, memoBlocks }) => {
 

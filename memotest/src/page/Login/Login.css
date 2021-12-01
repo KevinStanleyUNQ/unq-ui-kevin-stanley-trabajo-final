@@ -1,19 +1,26 @@
 .form-players {
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 
-    background-color: gray;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(163, 142, 160, 1) 0%,
+    rgba(145, 90, 142, 1) 47%,
+    rgba(102, 119, 121, 1) 81%
+  );
 }
 
-.form-players .choose-multiplayer{
+.form-players .choose-multiplayer {
   display: grid;
 }
 
-.form-players label{
-    color: blue;
-    margin-left: 0.5rem;
+.form-players label {
+  color: blue;
+  margin-left: 0.5rem;
 }
 
 .players-nickname {
@@ -33,9 +40,10 @@
   margin: 0.5rem;
 }
 
-.players-nickname input#playerTwoName, .players-nickname label#playerTwoName {
-    /* visibility: hidden; */
-  }
+.players-nickname input#playerTwoName,
+.players-nickname label#playerTwoName {
+  /* visibility: hidden; */
+}
 
 .players-nickname button {
   padding: 0.5em 1em;
@@ -44,7 +52,7 @@
   cursor: pointer;
 }
 
-.choose-board{
+.choose-board {
   display: grid;
   width: 100%;
   transform: translateY(-15rem);

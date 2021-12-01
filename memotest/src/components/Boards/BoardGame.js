@@ -129,9 +129,7 @@ const BoardGame = () => {
         {playerOneContext.isWinner && (
           <Modal isOpen={showModal}>
             <ModalHeader>
-              <h4 className="displayname-winner">
                 El Ganador es: {playerOneContext.displayname}
-              </h4>
             </ModalHeader>
             <ModalBody>
               <button className="btn btn-primary" onClick={retryGame}>

@@ -5,3 +5,41 @@
     max-width: 600px;
     margin: 100px auto;
 }
+
+@media(max-width: 650px){
+    .board {
+        max-width: 500px;
+    }
+}
+
+@media(max-width: 510px){
+    .board {
+        max-width: 400px;
+        grid-gap: 7px;
+        margin: 70px auto;
+    }
+}
+
+@media(max-width: 414px){
+    .board {
+        max-width: 300px;
+        grid-gap: 7px;
+        margin: 110px auto;
+    }
+}
+
+@media(max-width: 330px){
+    .board {
+        max-width: 200px;
+        grid-gap: 5px;
+        margin: 110px auto;
+    }
+}
+
+@media(max-width: 250px){
+    .board {
+        max-width: 150px;
+        grid-gap: 5px;
+        margin: 110px auto;
+    }
+}
