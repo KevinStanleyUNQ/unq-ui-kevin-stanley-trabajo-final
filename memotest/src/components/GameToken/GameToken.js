@@ -18,7 +18,6 @@ const GameToken = ({ animating, handleMemoClick, memoBlock }) => {
       "memo-block-inner memo-block-flipped"
     );
     setAllFlipped(cardsFlipped);
-    console.log(cardsFlipped);
     verifyIfIsWinner();
     return !memoBlock.flipped && !animating && handleMemoClick(memoBlock);
   };
@@ -30,11 +29,9 @@ const GameToken = ({ animating, handleMemoClick, memoBlock }) => {
     const conditionWinBoard8x8 = allFlipped.length + 1 === 64 && boardContext.isBoard8x8;
     
     if (conditionWinBoard4x4) {
-      console.log("Gano el Tablero 4x4");
       setPlayerOneContext({ ...playerOneContext, isWinner: true });
     }
     else if(conditionWinBoard6x4){
-      console.log("Gano el Tablero 6x4");
       setPlayerOneContext({ ...playerOneContext, isWinner: true });
     }
     else if(conditionWinBoard8x8){
