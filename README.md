@@ -2,7 +2,17 @@
 
 <img src="https://i.ibb.co/hyYDhhQ/emojitest.png" alt="board" width="400" />
 
-Este este el Juego de la Memoria o también conocido el Memotest, para poder jugar dicho juego deberas seguir los siguientes pasos:
+Este es el Juego de la Memoria o también conocido como el Memotest consiste en encontrar todas las parejas identicas de cada ficha.
+
+#
+## ATENCION: 
+
+A la hora de seleccionar las fichas dentro del juego, esperar unos 2 o 3 segundos entre selección, para que la animación se realice correctamente y no traiga inconvenientes al mencionar al ganador.
+
+En caso de no mostarse al ganador tan solo recargue la pagina.
+#
+
+Para poder jugar dicho juego deberas seguir los siguientes pasos:
 
 
 ## Requisitos para ejecutar:
