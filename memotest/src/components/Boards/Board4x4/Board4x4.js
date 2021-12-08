@@ -3,7 +3,6 @@ import GameToken from "../../GameToken/GameToken";
 import "./Board4x4.css";
 
 const Board4x4 = ({ animating, handleMemoClick, memoBlocks }) => {
-
   return (
     <div className="board">
       {memoBlocks.map((memoBlock, i) => {
@@ -15,7 +14,7 @@ const Board4x4 = ({ animating, handleMemoClick, memoBlocks }) => {
             memoBlock={memoBlock}
           />
         );
-      })}   
+      })}
     </div>
   );
 };

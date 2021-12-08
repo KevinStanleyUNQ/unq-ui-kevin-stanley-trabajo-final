@@ -57,3 +57,17 @@
   width: 100%;
   transform: translateY(-15rem);
 }
+
+.modal-error {
+  background-color: rgb(170, 108, 108);
+  border: 1px solid red;
+  border-radius: 15px;
+  padding: 13px 13px 13px 13px;
+  width: 100%;
+  height: 50%;
+}
+
+.modal-error .error-text {
+  color: beige;
+  font-size: 15px;
+}

@@ -103,7 +103,7 @@ const BoardGame = () => {
   return (
     <>
       <main className="displayName-players">
-        <h1>Es turno del Jugador Uno: {playerOneContext.displayname}</h1>
+        <h1>Es turno del Jugador Uno: {playerOneContext.displayname}</h1>  
         {boardContext.isBoard4x4 && (
           <Board4x4
             memoBlocks={shuffledMemoBlocks}

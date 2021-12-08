@@ -11,9 +11,11 @@ const Login = () => {
   const { boardContext, setBoardContext } = useContext(BoardContext);
 
   const [playerOne, setPlayerOne] = useState("");
-  const [playerTwo, setPlayerTwo] = useState("");
 
-  const [multiplayer, setMultiplayer] = useState(false);
+  const [showError, setShowError] = useState({
+    show: false,
+    text: "",
+  });
 
   const navigate = useNavigate();
 
@@ -21,23 +23,26 @@ const Login = () => {
     setPlayerOne(e.target.value);
   };
 
-  const handlePlayerTwo = (e) => {
-    setPlayerTwo(e.target.value);
-  };
 
   const handlePlay = () => {
-    setPlayerOneContext({ ...playerOneContext, displayname: playerOne });
-    navigate("/game");
+    if (playerOne.trim() !== "") {
+      setPlayerOneContext({ ...playerOneContext, displayname: playerOne });
+      navigate("/game");
+    } else {
+      setTimeout(() => {
+        setShowError({ show: true, text: "Por favor ingrese un Nombre" });
+      }, 0);
+      setTimeout(() => {
+        setShowError({ show: false, text: "" });
+      }, 3000);
+    }
   };
 
   const chooseOnePlayer = () => {
-    setMultiplayer(false);
-    setPlayerTwo("");
+    setBoardContext({ ...boardContext, multiplayer: false });
   };
 
-  const chooseTwoPlayers = () => {
-    setMultiplayer(true);
-  };
+ 
 
   const pickBoard4x4 = () => {
     handlePlay();
@@ -57,7 +62,7 @@ const Login = () => {
       isBoard6x4: true,
       isBoard8x8: false,
     });
-  }
+  };
 
   const pickBoard8x8 = () => {
     handlePlay();
@@ -67,9 +72,7 @@ const Login = () => {
       isBoard6x4: false,
       isBoard8x8: true,
     });
-  }
-  
-  
+  };
 
   return (
     <div className="form-players">
@@ -81,13 +84,6 @@ const Login = () => {
         >
           Jugar Solo
         </button>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={chooseTwoPlayers}
-        >
-          Jugadador Vs Jugador
-        </button>
       </div>
       <form className="players-nickname" onSubmit={handlePlay}>
         <div className="mb-3">
@@ -97,25 +93,16 @@ const Login = () => {
           <input
             type="text"
             className="form-control"
+            required
             id="playerOneName"
             name="playerOneName"
             value={playerOne}
             onChange={handlePlayerOne}
           />
         </div>
-        {multiplayer && (
-          <div className="mb-3">
-            <label className="form-label" id="playerTwoName">
-              Jugador Dos Nombre:
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="playerTwoName"
-              name="playerTwoName"
-              value={playerTwo}
-              onChange={handlePlayerTwo}
-            />
+        {showError.show && (
+          <div className="modal-error">
+            <h5 className="error-text">{showError.text}</h5>
           </div>
         )}
       </form>
@@ -130,10 +117,18 @@ const Login = () => {
         >
           Tablero 4x4
         </button>
-        <button type="button" className="btn btn-primary"  onClick={pickBoard6x4}>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={pickBoard6x4}
+        >
           Tablero 6x4
         </button>
-        <button type="button" className="btn btn-primary"  onClick={pickBoard8x8}>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={pickBoard8x8}
+        >
           Tablero 8x8
         </button>
       </div>

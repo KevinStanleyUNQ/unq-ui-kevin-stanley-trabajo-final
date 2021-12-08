@@ -7,7 +7,8 @@ const BoardProvider = ({ children }) => {
     isBoard4x4: true,
     isBoard6x4: false,
     isBoard8x8: false,
-    thereIsAWinner: false
+    thereIsAWinner: false,
+    multiplayer: false
   });
 
   const data = { boardContext, setBoardContext};
